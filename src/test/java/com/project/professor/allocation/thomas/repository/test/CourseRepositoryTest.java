@@ -1,5 +1,6 @@
 package com.project.professor.allocation.thomas.repository.test;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,8 @@ import com.project.professor.allocation.thomas.repository.CourseRepository;
 @TestPropertySource(locations = "classpath:application.properties")
 public class CourseRepositoryTest {
 
+	SimpleDateFormat sdf = new SimpleDateFormat("HH:mmZ");
+
 	@Autowired
 	CourseRepository courseRepository;
 
@@ -34,7 +37,7 @@ public class CourseRepositoryTest {
 	@Test
 	public void findById() {
 		// Act
-		Course course = courseRepository.findById(8L).orElse(null);
+		Course course = courseRepository.findById(1L).orElse(null);
 
 		// Print
 		System.out.println(course);
@@ -43,7 +46,7 @@ public class CourseRepositoryTest {
 	@Test
 	public void findByNameContainingIgnoreCase() {
 		// Act
-		List<Course> courses = courseRepository.findByNameContainingIgnoreCase("Course");
+		List<Course> courses = courseRepository.findByNameContainingIgnoreCase("Backend");
 
 		// Print
 		courses.forEach(System.out::println);
@@ -54,7 +57,7 @@ public class CourseRepositoryTest {
 		// Arrange
 		Course course = new Course();
 		course.setId(null);
-		course.setName("Course 123");
+		course.setName("Backend");
 
 		// Act
 		course = courseRepository.save(course);
@@ -67,8 +70,8 @@ public class CourseRepositoryTest {
 	public void save_update() {
 		// Arrange
 		Course course = new Course();
-		course.setId(9L);
-		course.setName("Course 456");
+		course.setId(1L);
+		course.setName("Frontend");
 
 		// Act
 		course = courseRepository.save(course);
@@ -80,7 +83,7 @@ public class CourseRepositoryTest {
 	@Test
 	public void deleteById() {
 		// Act
-		courseRepository.deleteById(8L);
+		courseRepository.deleteById(1L);
 	}
 
 	@Test
