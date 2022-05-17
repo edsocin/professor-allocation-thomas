@@ -23,130 +23,94 @@ import com.project.professor.allocation.thomas.repository.AllocationRepository;
 @TestPropertySource(locations = "classpath:application.properties")
 public class AllocationRepositoryTest {
 
-    SimpleDateFormat sdf = new SimpleDateFormat("HH:mmZ");
+	SimpleDateFormat sdf = new SimpleDateFormat("HH:mmZ");
 
-    @Autowired
-    AllocationRepository allocationRepository;
+	@Autowired
+	AllocationRepository allocationRepository;
 
-    @Test
-    public void findAll() {
-        // Act
-    	List <Allocation> allocations =  allocationRepository.findAll();
+	@Test
+	public void findAll() {
+		// Act
+		List<Allocation> allocations = allocationRepository.findAll();
 
-        // Print
-    	for (Allocation allocation2 : allocations) {
-    		System.out.println(allocation2);
-		}
-    	
-    	allocations.forEach(System.out::println);
-        
-    }
+		// Print
+		allocations.forEach(System.out::println);
+	}
 
-    @Test
-    public void findById() {
-        // Arrange
-    	Optional<Allocation>  optionAllocation = allocationRepository.findById(100L);
-        Allocation allocation = optionAllocation.orElse(null);
+	@Test
+	public void findById() {
+		// Act
+		Optional<Allocation> optionAllocation = allocationRepository.findById(100L);
+		Allocation allocation = optionAllocation.orElse(null);
 
-        // Act
-        
+		// Print
+		System.out.println(allocation);
+	}
 
-        // Print
-        System.out.println(allocation);
-        
-    }
+	@Test
+	public void findByProfessorId() {
+		// Act
+		List<Allocation> allocations = allocationRepository.findByProfessorId(1L);
 
-    @Test
-    public void findByProfessorId() {
-        // Arrange
-        
+		// Print
+		allocations.forEach(System.out::println);
+	}
 
-        // Act
-        
+	@Test
+	public void findByCourseId() {
+		// Act
+		List<Allocation> allocations = allocationRepository.findByCourseId(1L);
 
-        // Print
-        
-    }
+		// Print
+		allocations.forEach(System.out::println);
+	}
 
-    @Test
-    public void findByCourseId() {
-        // Arrange
-        
+	@Test
+	public void save_create() throws ParseException {
+		// Arrange
+		Allocation allocation = new Allocation();
+		allocation.setId(null);
+		allocation.setDay(DayOfWeek.SUNDAY);
+		allocation.setStart(sdf.parse("16:00-0300"));
+		allocation.setEnd(sdf.parse("20:00-0300"));
+		allocation.setProfessorId(1L);
+		allocation.setCourseId(1L);
 
-        // Act
-        
+		// Act
+		allocation = allocationRepository.save(allocation);
 
-        // Print
-        
-    }
+		// Print
+		System.out.println(allocation);
+	}
 
-    @Test
-    public void save_create() throws ParseException {
-    	 // Arrange
-        Allocation allocation = new Allocation();
-        allocation.setId(null);
-        allocation.setDay(DayOfWeek.SUNDAY);
-        allocation.setStart(sdf.parse("16:00-0300"));
-        allocation.setEnd(sdf.parse("20:00-0300"));
-        allocation.setProfessorId(1L);
-        allocation.setCourseId(1L);
+	@Test
+	public void save_update() throws ParseException {
+		// Arrange
+		Allocation allocation = new Allocation();
+		allocation.setId(1L);
+		allocation.setDay(DayOfWeek.FRIDAY);
+		allocation.setStart(sdf.parse("06:00-0300"));
+		allocation.setEnd(sdf.parse("08:00-0300"));
+		allocation.setProfessorId(1L);
+		allocation.setCourseId(1L);
 
-        // Act
-        allocation = allocationRepository.save(allocation);
+		// Act
+		allocation = allocationRepository.save(allocation);
 
-        // Print
-        System.out.println(allocation);
-        
-    }
+		// Print
+		System.out.println(allocation);
+	}
 
-    @Test
-    public void save_update() throws ParseException {
-    	// Arrange
-        Allocation allocation = new Allocation();
-        allocation.setId(1L);
-        allocation.setDay(DayOfWeek.FRIDAY);
-        allocation.setStart(sdf.parse("06:00-0300"));
-        allocation.setEnd(sdf.parse("08:00-0300"));
-        allocation.setProfessorId(1L);
-        allocation.setCourseId(1L);
+	@Test
+	public void deleteById() {
+		// Act
+		allocationRepository.deleteById(1L);
+	}
 
-        // Act
-        allocation = allocationRepository.save(allocation);
+	@Test
+	public void deleteAll() {
+		// Act
+		allocationRepository.deleteAll();
+	}
 
-        // Print
-        System.out.println(allocation);
-        
-    }
-
-    @Test
-    public void deleteById() {
-    	// Arrange
-    	List <Allocation> allocations =  allocationRepository.findAll();
-    	allocations.forEach(System.out::println);
-    	
-    	allocationRepository.deleteById(1L);
-
-        // Act
-    	List <Allocation> allocations2 =  allocationRepository.findAll();
-    	
-    	// Print
-    	allocations2.forEach(System.out::println);
-        
-    }
-
-    @Test
-    public void deleteAll() { // deletes podem ter só o delete sem as listagens
-    	// Arrange
-    	List <Allocation> allocations =  allocationRepository.findAll();
-    	allocations.forEach(System.out::println);
-    	
-    	allocationRepository.deleteAll();
-
-        // Act
-    	List <Allocation> allocations2 =  allocationRepository.findAll();
-    	
-    	// Print
-    	allocations2.forEach(System.out::println);
-        
-    }
 }
