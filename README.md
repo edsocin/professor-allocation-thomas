@@ -28,4 +28,6 @@ Caso queira colaborar com ideias e sugestões, fique à vontade para me contatar
 
 ### Referências
 
-[Meu Projeto](https://github.com/thribeiro8/portifolio).
+- [Eclipse](https://www.eclipse.org/downloads/packages/release/oxygen/3a/eclipse-ide-java-developers)
+- [Portifolio](https://github.com/thribeiro8/portifolio)
+- [Oracle](https://www.oracle.com/br/index.html)
