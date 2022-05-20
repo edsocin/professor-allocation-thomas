@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.project.professor.allocation.thomas.entity.Allocation;
+import com.project.professor.allocation.thomas.entity.Department;
 import com.project.professor.allocation.thomas.entity.Professor;
 import com.project.professor.allocation.thomas.repository.AllocationRepository;
 import com.project.professor.allocation.thomas.repository.ProfessorRepository;
@@ -13,15 +14,13 @@ import com.project.professor.allocation.thomas.repository.ProfessorRepository;
 public class ProfessorService {
 
 	private final ProfessorRepository professorRepository;
-//	private final DepartmentService departmentService;
+	private final DepartmentService departmentService;
 	private final AllocationRepository allocationRepository;
 
-//	public ProfessorService(ProfessorRepository professorRepository, DepartmentService departmentService, AllocationRepository allocationRepository) {
-
-	public ProfessorService(ProfessorRepository professorRepository, AllocationRepository allocationRepository) {
+	public ProfessorService(ProfessorRepository professorRepository, DepartmentService departmentService, AllocationRepository allocationRepository) {
 		super();
 		this.professorRepository = professorRepository;
-//		this.departmentService = departmentService;
+		this.departmentService = departmentService;
 		this.allocationRepository = allocationRepository;
 	}
 
@@ -49,8 +48,8 @@ public class ProfessorService {
 	public Professor saveInternal(Professor professor) {
 		professor = professorRepository.save(professor);
 
-		// Department department = departmentService.
-		// professor.setDepartment(department);
+		 Department department = departmentService.findById(professor.getDepartmentId());
+		 professor.setDepartment(department);
 
 		List<Allocation> allocations = allocationRepository.findByProfessorId(professor.getId());
 		professor.setAllocations(allocations);

@@ -29,25 +29,6 @@ public class AllocationServiceTest {
 
 		// Print
 		allocations.forEach(System.out::println);
-
-	}
-
-	@Test
-	public void findByProfessor() {
-		// Arrange
-
-		// Act
-
-		// Print
-	}
-
-	@Test
-	public void findByCourse() {
-		// Arrange
-
-		// Act
-
-		// Print
 	}
 
 	@Test
@@ -57,6 +38,24 @@ public class AllocationServiceTest {
 
 		// Print
 		System.out.println(allocations);
+	}
+
+	@Test
+	public void findByProfessor() {
+		// Act
+		List<Allocation> allocations = allocationService.findByProfessor(1L);
+
+		// Print
+		allocations.forEach(System.out::println);
+	}
+
+	@Test
+	public void findByCourse() {
+		// Act
+		List<Allocation> allocations = allocationService.findByCourse(1L);
+
+		// Print
+		allocations.forEach(System.out::println);
 	}
 
 	@Test
@@ -75,7 +74,6 @@ public class AllocationServiceTest {
 
 		// Print
 		System.out.println(allocation);
-
 	}
 
 	@Test
@@ -94,18 +92,18 @@ public class AllocationServiceTest {
 
 		// Print
 		System.out.println(allocation);
-
 	}
 
 	@Test
 	public void deleteById() {
-		// Arrange
-
 		// Act
+		allocationService.deleteById(1L);
 	}
 
 	@Test
 	public void deleteAll() {
 		// Act
+		allocationService.deleteAll();
 	}
+
 }
