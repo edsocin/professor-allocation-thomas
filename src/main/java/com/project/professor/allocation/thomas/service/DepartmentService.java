@@ -38,7 +38,7 @@ public class DepartmentService {
 		return saveInternal(department);
 	}
 
-	public Department saveInternal(Department department) {
+	private Department saveInternal(Department department) {
 		department = departmentRepository.save(department);
 
 		List<Professor> professors = professorRepository.findByDepartmentId(department.getId());

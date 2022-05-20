@@ -38,7 +38,7 @@ public class CourseService {
 		return saveInternal(course);
 	}
 
-	public Course saveInternal(Course course) {
+	private Course saveInternal(Course course) {
 		course = courseRepository.save(course);
 
 		List<Allocation> allocations = allocationRepository.findByCourseId(course.getId());
