@@ -16,7 +16,8 @@ public class AllocationService {
 	private final ProfessorService professorService;
 	private final CourseService courseService;
 
-	public AllocationService(AllocationRepository allocationRepository, ProfessorService professorService, CourseService courseService) {
+	public AllocationService(AllocationRepository allocationRepository, ProfessorService professorService,
+			CourseService courseService) {
 		super();
 		this.allocationRepository = allocationRepository;
 		this.professorService = professorService;
@@ -80,8 +81,7 @@ public class AllocationService {
 		// allocationRepository.deleteAllInBatch();
 	}
 
-	// validar se data inicial é menor que final e se ambas existem (diferentes de
-	// null)
+	// validar se data inicial é menor que final e se ambas existem (diferentes de null)
 	private boolean isEndHourGreaterThanStartHour(Allocation allocation) {
 		return allocation != null && allocation.getStart() != null && allocation.getEnd() != null
 				&& allocation.getEnd().compareTo(allocation.getStart()) > 0;

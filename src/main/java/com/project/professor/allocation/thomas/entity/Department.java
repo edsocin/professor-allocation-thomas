@@ -9,15 +9,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Department {
+
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "name", nullable = false, unique = true)
 	private String name;
-	
+
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@OneToMany(mappedBy = "department")
 	private List<Professor> professors;
 
@@ -32,7 +41,7 @@ public class Department {
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -46,8 +55,8 @@ public class Department {
 	}
 
 	@Override
-    public String toString() {
-        return "Department{" + "id=" + id + ", name='" + name + '\'' +'}';
-    }
+	public String toString() {
+		return "Department{" + "id=" + id + ", name='" + name + '\'' + '}';
+	}
 
 }
