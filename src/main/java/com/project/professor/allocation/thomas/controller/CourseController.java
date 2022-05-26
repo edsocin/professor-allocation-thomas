@@ -41,7 +41,7 @@ public class CourseController {
 		List<Course> courses = courseService.findAll();
 		return new ResponseEntity<>(courses, HttpStatus.OK);
 	}
-
+	
 	@ApiOperation(value = "Find a course by id")
 	@ApiResponses({ @ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 400, message = "Bad Request"), @ApiResponse(code = 404, message = "Not Found") })
 	@GetMapping(path = "/{course_id}", produces = MediaType.APPLICATION_JSON_VALUE)
