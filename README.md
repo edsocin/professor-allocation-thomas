@@ -26,11 +26,11 @@ O versionamento das **Tasks** será realizado por meio do [Github](https://githu
 
 Caso queira colaborar com ideias e sugestões, fique à vontade para me contatar.
 
-### Referências
+## Referências
 
 - [Eclipse](https://www.eclipse.org/downloads/packages/release/oxygen/3a/eclipse-ide-java-developers)
 - [Oracle](https://www.oracle.com/br/index.html)
 
-### Execução do Projeto
+## Execução do Projeto Local
 
 - http://localhost:8080/swagger-ui/index.html
