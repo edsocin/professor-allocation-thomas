@@ -30,3 +30,7 @@ Caso queira colaborar com ideias e sugestões, fique à vontade para me contatar
 
 - [Eclipse](https://www.eclipse.org/downloads/packages/release/oxygen/3a/eclipse-ide-java-developers)
 - [Oracle](https://www.oracle.com/br/index.html)
+
+### Execução do Projeto
+
+- http://localhost:8080/swagger-ui/index.html

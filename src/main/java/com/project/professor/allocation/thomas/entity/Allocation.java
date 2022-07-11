@@ -42,16 +42,16 @@ public class Allocation {
 	@JsonSerialize(using = DateSerializer.class)
 	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
 	@Temporal(TemporalType.TIME)
-	@Column(name = "start", nullable = false)
-	private Date start;
+	@Column(name = "startHour", nullable = false)
+	private Date startHour;
 
 	@ApiModelProperty(example = "14:00-0300")
 	@JsonFormat(pattern = "HH:mmZ")
 	@JsonSerialize(using = DateSerializer.class)
 	@JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
 	@Temporal(TemporalType.TIME)
-	@Column(name = "end", nullable = false)
-	private Date end;
+	@Column(name = "endHour", nullable = false)
+	private Date endHour;
 
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@Column(name = "course_id", nullable = false)
@@ -89,20 +89,20 @@ public class Allocation {
 		this.day = day;
 	}
 
-	public Date getStart() {
-		return start;
+	public Date getStartHour() {
+		return startHour;
 	}
 
-	public void setStart(Date start) {
-		this.start = start;
+	public void setStartHour(Date startHour) {
+		this.startHour = startHour;
 	}
 
-	public Date getEnd() {
-		return end;
+	public Date getEndHour() {
+		return endHour;
 	}
 
-	public void setEnd(Date end) {
-		this.end = end;
+	public void setEndHour(Date endHour) {
+		this.endHour = endHour;
 	}
 
 	public Long getCourseId() {
@@ -135,12 +135,6 @@ public class Allocation {
 
 	public void setCourse(Course course) {
 		this.course = course;
-	}
-
-	@Override
-	public String toString() {
-		return "Allocation{" + "id=" + id + ", day=" + day + ", start=" + start + ", end=" + end + ", courseId="
-				+ courseId + ", professorId=" + professorId + ", course=" + course + ", professor=" + professor + '}';
 	}
 
 }
